@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tema 1</title>
+	<meta name="author" content="Pongracz Noemi">
+</head>
+<body>
+	<script>
+        
+        const pi= Math.PI;
+
+        let razaCerc = 10;
+        console.log("Raza cercului este: " + razaCerc + " cm")
+
+        ariaCerc= (pi * (razaCerc ** 2)).toFixed(2);
+        console.log("Aria cercului este: " + ariaCerc);
+
+        // --------------------------------------------------------
+
+        const listaFilme = ['Parasite', 'Star wars', 'Joker', 'Interstellar', 'Wonder woman'];
+
+        for(let i=0; i< listaFilme.length ; i++){
+            console.log("titlu: " + listaFilme[i] + " , index: " + i);
+        }
+
+        // --------------------------------------------------------
+
+        const tablou = [5, 3, "1", 7, "9", 30, "45", 7];
+
+        for(let i=0; i<tablou.length; i++){
+
+            if( typeof tablou[i] =='number' ){
+
+                var primulNumar= tablou[i];
+                break;
+
+            }
+            
+        }
+
+        let min= primulNumar;
+        let max= primulNumar;
+
+        
+        for(let i=0; i< tablou.length; i++){
+            let eNumar= typeof tablou[i] =='number';
+            
+            if(tablou[i]<min && eNumar)
+                min= tablou[i];
+
+            if(tablou[i]>max && eNumar)
+                max= tablou[i];
+
+        }
+
+        console.log("numarul minim: "+ min + ", numarul maxim: " + max);
+
+    </script>
+</body>
+</html>
