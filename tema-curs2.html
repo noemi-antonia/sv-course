@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tema 1</title>
+	<meta name="author" content="Pongracz Noemi">
+</head>
+<body>
+    <script>    
+    
+    console.log("Exercitiul 1");
+
+    let sumaInLei= 749;
+    var cursValutarEuro = 4.83;  
+    var cursValutarForint = 0.013;
+    var cursValutarDolar = 4.48;
+    
+
+    function schimbaValuta(valuta) {
+
+        let sumaTransformata = 0;
+
+        switch (valuta) {
+        case "EUR":
+            sumaTransformata = (sumaInLei / cursValutarEuro).toFixed(2);
+            break;
+        case "HUF":
+            sumaTransformata = (sumaInLei / cursValutarForint).toFixed(2);
+            break;
+        case "USD":
+            sumaTransformata = (sumaInLei / cursValutarDolar).toFixed(2);
+            break;
+        default:
+            alert("nu ai introdus o valuta valida!");
+        }
+
+        return sumaTransformata;
+    }
+
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("EUR")} EUR`);
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("HUF")} HUF`);
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("USD")} USD`);
+    // console.log(schimbaValuta("Test"));
+    
+
+    // -----------------------------------------------------------------------------------------
+
+    console.log("\nExercitiul 2");
+
+    tip = (parametru) => typeof parametru;
+
+    let param= "Vasilica";
+    console.log(`${param} -> ${tip(param)}`);
+
+    param=5;
+    console.log(`${param} -> ${tip(param)}`);
+
+    param=true;
+    console.log(`${param} -> ${tip(param)}`);
+
+    // -----------------------------------------------------------------------------------------
+
+    console.log("\nExercitiul 3");
+
+    // METODA 1
+    
+    extragePrimeleLitere1 = (string) => {
+        let primeleLitere = string[0];
+        for(let i=1; i< string.length; i++){
+            if(string[i] == ' '){
+                primeleLitere+=string[i+1];
+            }
+        }
+        console.log(`"${string}" => ${primeleLitere}`);
+    }
+
+    extragePrimeleLitere1("Universitatea Tehnica Cluj Napoca");
+    
+
+    // METODA 2
+
+    extragePrimeleLitere2 = (str) => {
+        
+        let rezultat = str[0];
+        let aux=str;
+        let sfarsit=false;
+
+        while(!sfarsit){
+
+            let spacePos = aux.indexOf(" ");
+
+            if(spacePos != (-1)){
+                rezultat += aux[spacePos+1];
+                aux= aux.slice(spacePos+1, aux.length);
+            }
+            else
+            sfarsit=true;
+        }
+        
+        console.log(`"${str}" => ${rezultat}`);
+    }
+
+    extragePrimeleLitere2("Universitatea Tehnica Cluj Napoca");
+
+    // METODA 3
+
+    extragePrimeleLitere = (str) => {
+        let array=str.split(" ");
+        let rezultat="";
+
+        for(let i=0; i<array.length; i++){
+            rezultat+= array[i].charAt(0);
+        }
+
+        console.log(`"${str}" => ${rezultat}`);
+    }
+
+    extragePrimeleLitere("Universitatea Tehnica Cluj Napoca");
+
+    const fraze = [
+    "Quisque faucibus ipsum id nibh egestas bibendum.",
+    "Phasellus tincidunt sapien nec est tempus lacinia.",
+    "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+    "Praesent a magna a ligula gravida sodales eu ut erat.",
+    "Ut eleifend velit vitae ipsum mattis viverra."    
+    ]
+
+    for(i=0; i<fraze.length; i++){
+        extragePrimeleLitere(fraze[i]);
+    }
+
+    // -----------------------------------------------------------------------------------------
+
+    console.log("\nExercitiul 4");
+
+    class Shape{
+
+    constructor(culoare, laturi){
+        this.culoare=culoare;
+        this.laturi=laturi;
+    }
+
+    perimetru(){
+
+        var perimetru=0;
+
+        for(let i=0 ; i< this.laturi.length ; i++){
+            perimetru+= this.laturi[i];
+        }
+
+        return perimetru;
+    }
+
+    semiperimetru(){
+
+        return this.perimetru()/2;
+
+    }
+
+    tipulPoligonului(){
+
+        let nrLaturi= this.laturi.length;
+
+        switch (nrLaturi) {
+        case 3:
+            console.log("triunghi 3 laturi");
+            break;
+        case 4:
+            console.log("patrulater 4 laturi");
+            break;
+        case 5:
+            console.log("pentagon 5 laturi");
+            break;
+        case 6:
+            console.log("hexagon 6 laturi");
+            break;
+        default:
+            console.log("WORK IN PROGRESS");
+        }
+        
+    }
+
+    }
+
+    let pentagon = new Shape("Rosu",[4,3,5,6,10]);
+    pentagon.tipulPoligonului();
+    console.log(`culoare: ${pentagon.culoare}`);
+    console.log(`perimetrul: ${pentagon.perimetru()}`);
+    console.log(`semiperimetrul:${pentagon.semiperimetru()}`);
+
+    // -----------------------------------------------------------------------------------------
+
+    console.log("\nExercitiul 5");
+
+    class Triunghi extends Shape {
+        constructor(culoare,laturi){
+            super(culoare,laturi);
+        }
+
+        arie(){
+            let s=this.semiperimetru();
+            //calculez aria dupa formula lui Heron
+            return Math.sqrt(s*((s-this.laturi[0]) * (s-this.laturi[1]) * (s-this.laturi[2]))).toFixed(2);
+        }
+
+    }
+
+    class Patrulater extends Shape {
+
+        //calculez aria dupa formula lui Bretschneider, pentru care am nevoie de doua unghiuri opuse
+        constructor(culoare,laturi,unghiA,unghiC){
+            super(culoare,laturi);
+            this.unghiA=unghiA;
+            this.unghiC=unghiC;
+        }
+
+        arie(){
+            let s=this.semiperimetru();
+            let produsulLaturilor=1;
+
+            for (i=0;i<this.laturi.length;i++){
+                produsulLaturilor*=this.laturi[i];
+            }
+
+            console.log(produsulLaturilor); 
+
+            return Math.sqrt((s-this.laturi[0])*(s-this.laturi[1])*(s-this.laturi[2])*(s-this.laturi[3])-produsulLaturilor* Math.cos((this.unghiA+this.unghiC)/2) ** 2).toFixed(2);
+        }
+
+    }
+
+    function afiseazaRezultate(shape){
+        shape.tipulPoligonului();
+        console.log(`perimetrul: ${shape.perimetru()}`);
+        console.log(`semiperimetrul: ${shape.semiperimetru()}`);
+        console.log(`aria: ${shape.arie()}`);
+        console.log(`culoarea: ${shape.culoare}`);
+    }
+
+    let triunghi =  new Triunghi("Verde", [6,12,9]);
+    afiseazaRezultate(triunghi);
+
+
+    let patrulater = new Patrulater("Albastru",[4,8,7,5],112,108);
+    afiseazaRezultate(patrulater);
+
+    </script>
+</body>
+</html>
