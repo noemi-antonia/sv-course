@@ -10,10 +10,10 @@
     
     console.log("Exercitiul 1");
 
-    let sumaInLei= 749;
-    var cursValutarEuro = 4.83;  
-    var cursValutarForint = 0.013;
-    var cursValutarDolar = 4.48;
+    const sumaInLei= 749;
+    const cursValutarEuro = 4.83;  
+    const cursValutarForint = 0.013;
+    const cursValutarDolar = 4.48;
     
 
     function schimbaValuta(valuta) {
@@ -37,9 +37,13 @@
         return sumaTransformata;
     }
 
-    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("EUR")} EUR`);
-    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("HUF")} HUF`);
-    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta("USD")} USD`);
+    const eur = "EUR";
+    const huf = "HUF";
+    const usd = "USD";
+
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta(eur)} EUR`);
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta(huf)} HUF`);
+    console.log(`Suma ${sumaInLei} RON este egala cu ${schimbaValuta(usd)} USD`);
     // console.log(schimbaValuta("Test"));
     
 
@@ -47,7 +51,7 @@
 
     console.log("\nExercitiul 2");
 
-    tip = (parametru) => typeof parametru;
+    function tip (parametru) {typeof parametru;}
 
     let param= "Vasilica";
     console.log(`${param} -> ${tip(param)}`);
@@ -64,7 +68,7 @@
 
     // METODA 1
     
-    extragePrimeleLitere1 = (string) => {
+    function extragePrimeleLitere1 (string) {
         let primeleLitere = string[0];
         for(let i=1; i< string.length; i++){
             if(string[i] == ' '){
@@ -74,20 +78,22 @@
         console.log(`"${string}" => ${primeleLitere}`);
     }
 
-    extragePrimeleLitere1("Universitatea Tehnica Cluj Napoca");
+    const text= "Universitatea Tehnica Cluj Napoca";
+    extragePrimeleLitere1(text);
     
 
     // METODA 2
 
-    extragePrimeleLitere2 = (str) => {
+    function extragePrimeleLitere2 (str) {
         
         let rezultat = str[0];
         let aux=str;
         let sfarsit=false;
+        let spacePos;
 
         while(!sfarsit){
 
-            let spacePos = aux.indexOf(" ");
+            spacePos = aux.indexOf(" ");
 
             if(spacePos != (-1)){
                 rezultat += aux[spacePos+1];
@@ -100,12 +106,12 @@
         console.log(`"${str}" => ${rezultat}`);
     }
 
-    extragePrimeleLitere2("Universitatea Tehnica Cluj Napoca");
+    extragePrimeleLitere2(text);
 
     // METODA 3
 
-    extragePrimeleLitere = (str) => {
-        let array=str.split(" ");
+    function extragePrimeleLitere (str) {
+        const array=str.split(" ");
         let rezultat="";
 
         for(let i=0; i<array.length; i++){
@@ -115,7 +121,7 @@
         console.log(`"${str}" => ${rezultat}`);
     }
 
-    extragePrimeleLitere("Universitatea Tehnica Cluj Napoca");
+    extragePrimeleLitere(text);
 
     const fraze = [
     "Quisque faucibus ipsum id nibh egestas bibendum.",
@@ -125,7 +131,7 @@
     "Ut eleifend velit vitae ipsum mattis viverra."    
     ]
 
-    for(i=0; i<fraze.length; i++){
+    for(let i=0; i<fraze.length; i++){
         extragePrimeleLitere(fraze[i]);
     }
 
@@ -142,7 +148,7 @@
 
     perimetru(){
 
-        var perimetru=0;
+        let perimetru=0;
 
         for(let i=0 ; i< this.laturi.length ; i++){
             perimetru+= this.laturi[i];
@@ -159,7 +165,7 @@
 
     tipulPoligonului(){
 
-        let nrLaturi= this.laturi.length;
+        const nrLaturi= this.laturi.length;
 
         switch (nrLaturi) {
         case 3:
@@ -182,7 +188,7 @@
 
     }
 
-    let pentagon = new Shape("Rosu",[4,3,5,6,10]);
+    const pentagon = new Shape("Rosu",[4,3,5,6,10]);
     pentagon.tipulPoligonului();
     console.log(`culoare: ${pentagon.culoare}`);
     console.log(`perimetrul: ${pentagon.perimetru()}`);
@@ -198,7 +204,7 @@
         }
 
         arie(){
-            let s=this.semiperimetru();
+            const s=this.semiperimetru();
             //calculez aria dupa formula lui Heron
             return Math.sqrt(s*((s-this.laturi[0]) * (s-this.laturi[1]) * (s-this.laturi[2]))).toFixed(2);
         }
@@ -215,10 +221,10 @@
         }
 
         arie(){
-            let s=this.semiperimetru();
+            const s=this.semiperimetru();
             let produsulLaturilor=1;
 
-            for (i=0;i<this.laturi.length;i++){
+            for (let i=0;i<this.laturi.length;i++){
                 produsulLaturilor*=this.laturi[i];
             }
 
@@ -237,11 +243,11 @@
         console.log(`culoarea: ${shape.culoare}`);
     }
 
-    let triunghi =  new Triunghi("Verde", [6,12,9]);
+    const triunghi =  new Triunghi("Verde", [6,12,9]);
     afiseazaRezultate(triunghi);
 
 
-    let patrulater = new Patrulater("Albastru",[4,8,7,5],112,108);
+    const patrulater = new Patrulater("Albastru",[4,8,7,5],112,108);
     afiseazaRezultate(patrulater);
 
     </script>
