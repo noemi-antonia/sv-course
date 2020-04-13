@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Tema 3 - Exercitiul 1</title>
+    <style type="text/css">
+        canvas { border: 1px solid black; }
+
+        .container{ 
+            display: grid;
+            grid-template-columns: 300px 600px;
+            grid-template-areas:
+            "playground1 playground3"
+            "playground2 playground3" ;
+        }
+
+        #playground1{ grid-area: playground1;}
+        #playground2{ grid-area: playground2;}
+        #playground3{ grid-area: playground3;}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="playground1"></div>
+        <div id="playground2"></div>
+        <div id="playground3"></div>
+    </div>
+    <script src="canvas.js"></script>
+</body>
+
+</html>
