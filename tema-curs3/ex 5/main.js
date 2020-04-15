@@ -47,8 +47,8 @@ class Square {
     }
     
 }
-square = new Square(2,3); square.draw();
-square2 = new Square(5,7); square2.draw();
+const square = new Square(2,3); square.draw();
+const square2 = new Square(5,7); square2.draw();
 
 
 
