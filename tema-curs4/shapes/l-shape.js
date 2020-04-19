@@ -1,6 +1,6 @@
 import { Shape } from '/shape.js';
 
-export class L extends Shape{
+export class L extends Shape {
     constructor(row, column, cells) {
         super(row, column, cells);
         this.template = [

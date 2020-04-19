@@ -1,10 +1,10 @@
-export class Shape{
-    constructor(row, column, cells){
+export class Shape {
+    constructor(row, column, cells) {
         this.row = row;
         this.column = column;
-        this.cells = cells;    
+        this.cells = cells;
         this.template = [];
-        this.color = '';   
+        this.color = '';
     }
 
     draw() {
@@ -33,7 +33,7 @@ export class Shape{
         this.column++;
     }
 
-    changeTheColor(){
+    changeTheColor() {
         this.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
     }
 }

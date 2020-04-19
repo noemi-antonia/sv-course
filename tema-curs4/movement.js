@@ -1,12 +1,11 @@
-export class Movement{
-
-    constructor(shape, grid, key){
-        this.shape=shape;
-        this.grid=grid;
-        this.key=key;
+export class Movement {
+    constructor(shape, grid, key) {
+        this.shape = shape;
+        this.grid = grid;
+        this.key = key;
     }
 
-    activateHandlers(){
+    activateHandlers() {
 
         switch (this.key) {
             case 'ArrowUp':

@@ -39,7 +39,7 @@ tShape.draw();
 
 
 document.addEventListener("keydown", event => {
-    const movement=new Movement(oShape,grid,event.key);
+    const movement = new Movement(oShape, grid, event.key);
     movement.activateHandlers();
 });
 
