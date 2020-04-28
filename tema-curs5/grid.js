@@ -24,6 +24,15 @@ export class Grid {
         }
     }
 
+    hasMatch() {
+        for (let row = this.rows - 1; row >= 0; row--) {
+            if (this.checkFull(row)) {
+                return row;
+            }
+        }
+        return -1;
+    }
+
     checkFull(row) {
         for (let column = 0; column < this.columns; column++) {
             if (this.cells[row][column].isEmpty) {
@@ -33,29 +42,25 @@ export class Grid {
         return true;
     }
 
-    clearRow(row) {
-        for (let column = 0; column < this.columns; column++) {
-            this.cells[row][column].draw('#7facf5');
-            this.cells[row][column].isEmpty = true;
-        }
-    }
-
     collapse(row) {
-
+        this.clearRow(row);
         for (let r = row - 1; r >= 0; r--) {
             for (let c = 0; c < this.columns; c++) {
-
                 if (!this.cells[r][c].isEmpty) {
 
                     this.cells[r + 1][c].color = this.cells[r][c].color;
                     this.cells[r + 1][c].isEmpty = false;
                     this.cells[r + 1][c].draw();
                 }
-
             }
             this.clearRow(r);
-            console.log("clearRow" + r);
+        }
+    }
 
+    clearRow(row) {
+        for (let column = 0; column < this.columns; column++) {
+            this.cells[row][column].draw('#7facf5');
+            this.cells[row][column].isEmpty = true;
         }
     }
 

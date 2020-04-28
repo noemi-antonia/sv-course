@@ -1,22 +1,8 @@
-# tetris - Curs 4
-1. Create grid class.
-2. Rewrite the code using module type for scripts. Talk about dependencies.
-3. Create one model(L shape) and draw it on the grid.
-4. Implement events (keydown event - up, left, right,down)
-5. Animate the shape with setInterval.
+# Tema 5
+1. Am instantat un nou Movement pentru shape-ul nou generat si l-am asignat variabilei movement pentru o buna functionare a functiei animate.
 
-# tetris - Curs 5
+2. Am mutat metoda rotate() in clasa movement, eu consider ca si rotirea este un fel de miscare (sper ca este in regula). Practic aici sterg shape-ul actual, iau urmatorul template din lista fara a incrementa templateIndex (nu este sigur ca vom aplica noul template) dupa care, cu ajutorul validator-ului verific daca este o rotire valida. Am modificat validator-ul vechi dand-ui inca un parametru: template-ul peste care iterez si fac verificarile.
+Daca nu este o rotatie valida sau shape-ul nu se mai poate misca redesenez doar vechiul shape. In caz contrar asignez noul template, incrementez templateIndex si redesenez shape-ul cu acesta. 
 
-As part of homework.
-- Implement all shapes.
-- Choose random color when ENTER is pressed for shape.
-- Implement movement class.
-- Implement shape class as base class.
-
-
-1. Clear only the current shape instead of the whole grid.
-2. Generate random shapes.
-3. Rotate.
-4. Validation - bottom, left, right.
-5. Implement stop logic for shape.
-6. Add collisions inside grid.
+3. Pentru logica de score in clasa grid am metoda hasMatch care verifica incepand de la ultimul row daca exista sau nu row ocupat. Verific asta in checkFull(row), iterez peste fiecare coloana a row-ului respectiv si daca gasesc macar unul empty returnez false. Atata timp cat am row-uri ocupate collapsez.Trimit row-ul ocupat catre collapse(row) care mi-l sterge si incepand cu cel de deasupra imi muta toate cellurile care nu sunt empty cu una mai jos, si le schimba starea de isEmpty. Dupa ce s-au parcurs toate coloanele row-ului curent sterg row-ul car a fost mutat.
+Dupa collapsare incrementez scorul. Am creat o clasa score. Aici se gaseste elementul HTML score si variabila in care stochez valoarea actuala. Ca si metode am increase si update. La fiecare increase de score se va face update. Dupa collapsarea unui row fac increase la score.
