@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body{
+    font-family: 'press Start 2P', cursive;
+    color:white;
+    background-image: url('../images/bk.png');
+    background-position: left top;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    
+}
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 3em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    background: linear-gradient(to bottom right, rgba(0, 1, 27, 0.6)  0%, rgba(4, 5, 55, 0.6) 100%);
+    border-radius: 0.75em;
+}
+
+.canvas{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#gameTitle{
+    writing-mode: vertical-rl;
+    text-orientation: upright; 
+    text-transform: uppercase;
+    font-size: 50px;
+    letter-spacing: 15px;
+}
+
+.infoBlock:nth-child(1),.infoBlock:nth-child(2),.infoBlock:nth-child(3){
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px 10px 18px rgba(0,0,0,0.2);
+    padding: 1.25em;
+    background-color: rgba(4, 5, 55, 0.9);
+}
+
+#startBlock{
+    padding: 1.25em;
+}
+
+#startgame:hover:enabled{
+    box-shadow: 5px 10px 18px rgba(0,0,0,0);
+}
+
+#startgame{
+    padding: 1.25em 2em;
+    background-color: #8c8aee;
+    font-family: inherit;
+    box-shadow: 5px 10px 18px rgba(0,0,0,0.5);
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+#nextShapeBlock{
+    display: flex;
+    flex-direction: column;
+}
